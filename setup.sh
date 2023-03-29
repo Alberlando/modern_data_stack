@@ -2,20 +2,19 @@
 up() {
   echo "Starting Airbyte..."
   cd airbyte
-  docker-compose down -v
+  docker-compose stop
   docker-compose up -d
   cd ..
 
   echo "Starting Airflow..."
   cd airflow
-  docker-compose down -v    
-  docker-compose up airflow-init
+  docker-compose stop
   docker-compose up -d 
   cd ..
 
   echo "Starting Metabase..."
   cd metabase
-  docker-compose down -v
+  docker-compose stop
   docker-compose up -d
   cd ..
  
@@ -64,18 +63,18 @@ config() {
 }
 
 
-down() {
+stop() {
   echo "Stopping Airbyte..."
   cd airbyte
-  docker-compose down
+  docker-compose stop
   cd ..
   echo "Stopping Airflow..."
   cd airflow
-  docker-compose down
+  docker-compose stop
   cd ..
   echo "Stopping Metabase..."
   cd metabase
-  docker-compose down
+  docker-compose stop
   cd ..
 }
 
@@ -86,10 +85,10 @@ case $1 in
   config)
     config
     ;;
-  down)
-    down
+  stop)
+    stop
     ;;
   *)
-    echo "Usage: $0 {up|config|down}"
+    echo "Usage: $0 {up|config|stop}"
     ;;
 esac
