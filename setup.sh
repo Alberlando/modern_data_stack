@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 up() {
+
   echo "Starting Airbyte..."
   cd airbyte
   docker-compose stop
@@ -60,10 +61,12 @@ config() {
   cd ..
   
   echo "Config Updated..."
+
 }
 
 
 stop() {
+
   echo "Stopping Airbyte..."
   cd airbyte
   docker-compose stop
@@ -76,6 +79,7 @@ stop() {
   cd metabase
   docker-compose stop
   cd ..
+  
 }
 
 case $1 in
