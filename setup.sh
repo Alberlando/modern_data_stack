@@ -29,7 +29,7 @@ up() {
 
 config() {
 
-  echo "Connecting Airflow with Airbyte..."
+#  echo "Connecting Airflow with Airbyte..."
   echo "Enter your Airbyte Epidemiology connection ID: "
   read epidemiology_connection_id
 
@@ -52,8 +52,8 @@ config() {
   docker network create modern-data-stack
   docker network connect modern-data-stack airbyte-proxy
   docker network connect modern-data-stack airbyte-worker  
-  docker network connect modern-data-stack airflow-airflow-worker-1
-  docker network connect modern-data-stack airflow-airflow-webserver-1
+  docker network connect modern-data-stack airflow_airflow-worker_1
+  docker network connect modern-data-stack airflow_airflow-webserver_1
   docker network connect modern-data-stack metabase
   
   cd airflow
@@ -79,7 +79,7 @@ stop() {
   cd metabase
   docker-compose stop
   cd ..
-  
+
 }
 
 case $1 in
